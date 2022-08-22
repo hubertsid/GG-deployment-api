@@ -1,4 +1,4 @@
-import algorithm
+import algo
 from flask import *
 import json
 
@@ -18,7 +18,7 @@ def test_post():
     
     for i in collection['games']:
         gm.append(i)
-    recs = algorithm.give_reccomendations(gm)
+    recs = algo.give_reccomendations(gm)
 
     return jsonify(game = recs)
 
