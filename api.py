@@ -4,6 +4,10 @@ import json
 
 app = Flask(__name__)
 
+@app.route('/')
+def home_view():
+    return "<h1>Welcome to gamer grandma</h1>"
+
 @app.route('/api', methods=['POST'])
 def test_post():
     request_data = request.get_json()
