@@ -4,7 +4,7 @@ import json
 
 app = Flask(__name__)
 
-@app.route('/test', methods=['POST'])
+@app.route('/api', methods=['POST'])
 def test_post():
     request_data = request.get_json()
     gm = []
