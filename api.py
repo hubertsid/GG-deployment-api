@@ -22,4 +22,4 @@ def test_post():
 
     return jsonify(game = recs)
 
-app.run(port=3000)
+app.run()
