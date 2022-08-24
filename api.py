@@ -1,6 +1,7 @@
 import algo
 from flask import *
 import json
+from waitress import serve
 
 app = Flask(__name__)
 
@@ -23,5 +24,4 @@ def test_post():
     return jsonify(game = recs)
 
 if __name__ == "__main__":
-    from waitress import serve
     serve(app, host="0.0.0.0", port=8080)
