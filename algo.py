@@ -9,6 +9,7 @@ def give_reccomendations(games):
     choices = games
     conn = sqlite3.connect("game.db")
     c = conn.cursor()
+    
     for choice in choices:
         query = "SELECT * FROM games WHERE title = ?"
         ch = [choice]

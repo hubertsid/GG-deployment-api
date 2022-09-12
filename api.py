@@ -2,6 +2,7 @@ import algo
 from flask import *
 import json
 from flask_cors import CORS, cross_origin
+import sqlite3
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -23,6 +24,7 @@ def test_post():
     
     for i in collection['games']:
         gm.append(i)
+
     recs = algo.give_reccomendations(gm)
 
     return jsonify(game = recs)
