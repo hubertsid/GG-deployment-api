@@ -1,13 +1,30 @@
 import sqlite3
 
+conn_new = sqlite3.connect("img.db")
+c_new = conn_new.cursor()
+query = 'CREATE TABLE games(id INT NOT NULL UNIQUE, title TEXT NOT NULL UNIQUE, url TEXT, img TEXT)'
+c_new.execute(query)
+
+
+
 conn = sqlite3.connect("game.db")
 c = conn.cursor()
-
 query = "SELECT * FROM games"
 c.execute(query)
 results = c.fetchall()
-for res in results[0][1:3]:
-    print(res)
+
+counter = 1
+for res in results:
+    id = res[2].replace("https://store.steampowered.com/app/","").replace("/","").lstrip()
+    url = "https://cdn.akamai.steamstatic.com/steam/apps/"+id+"/header.jpg"
+    query = 'INSERT INTO games VALUES(?,?,?,?)'
+
+    c_new.execute(query, (counter, res[1], res[2], url))
+    conn_new.commit()
+    counter += 1
+
+    
+
 
 
 

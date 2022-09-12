@@ -26,6 +26,16 @@ def test_post():
         gm.append(i)
 
     recs = algo.give_reccomendations(gm)
+    conn = sqlite3.connect("game.db")
+    c = conn.cursor()
+    
+    for r in recs:
+        query = "SELECT * FROM games WHERE title = ?"
+        c.execute(query,r)
+        result = c.fetchall()
+
+
+
 
     return jsonify(game = recs)
 
